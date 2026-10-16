@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NutriSite — здоровая еда с доставкой на всю неделю</title>
+  <meta name="description" content="Сбалансированные блюда от шеф-поваров и нутрициологов с доставкой каждый день недели.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo">Nutri<span>Site</span></a>
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <a href="#how">Как это работает</a>
+        <a href="#menu">Меню</a>
+        <a href="#plans">Тарифы</a>
+        <a href="#reviews">Отзывы</a>
+      </nav>
+      <div class="header__actions">
+        <button class="btn btn--small" data-open-modal>Начать</button>
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!--Главный экран-->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <h1>Здоровая еда каждый день недели — уже у вашей двери</h1>
+          <p>Шеф-повара готовят, нутрициолог считает калории, курьер привозит свежие блюда к выбранному времени. Вам остаётся только поесть.</p>
+          <div class="hero__actions">
+            <button class="btn" data-open-modal>Начать</button>
+            <a href="#menu" class="btn btn--ghost">Посмотреть меню</a>
+          </div>
+          <ul class="hero__facts">
+            <li><strong data-count="120">0</strong> блюд в меню</li>
+            <li><strong data-count="7">0</strong> дней доставки</li>
+            <li><strong data-count="15">0</strong> тысяч клиентов</li>
+          </ul>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="plate">🥗</div>
+          <span class="chip chip--a">🥑 Без сахара</span>
+          <span class="chip chip--b">🔥 450 ккал</span>
+          <span class="chip chip--c">🚚 К 8:00</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <h2>Как это работает</h2>
+        <ol class="steps">
+          <li class="step"><span class="step__num">1</span><h3>Выберите тариф</h3><p>Подберите калорийность под вашу цель: похудение, поддержание веса или набор массы.</p></li>
+          <li class="step"><span class="step__num">2</span><h3>Назначьте дни</h3><p>Отметьте дни недели и удобный интервал доставки — хоть все семь.</p></li>
+          <li class="step"><span class="step__num">3</span><h3>Получайте и ешьте</h3><p>Курьер привезёт готовые блюда в контейнерах. Разогрейте за две минуты.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!--Слайдер-->
+    <section class="section section--tint" id="menu">
+      <div class="container">
+        <h2>Что вы будете есть</h2>
+        <div class="swiper menu-slider">
+          <div class="swiper-wrapper" id="menuList"><!-- карточки добавляет main.js --></div>
+          <div class="swiper-pagination"></div>
+          <button class="swiper-button-prev" aria-label="Назад"></button>
+          <button class="swiper-button-next" aria-label="Вперёд"></button>
+        </div>
+      </div>
+    </section>
+
+    <!--Тарифы-->
+    <section class="section" id="plans">
+      <div class="container">
+        <h2>Тарифы на неделю</h2>
+        <div class="plans" id="planList"><!-- карточки добавляет main.js --></div>
+      </div>
+    </section>
+
+    <!--Отзывщ-->
+    <section class="section section--tint" id="reviews">
+      <div class="container">
+        <h2>Что говорят клиенты</h2>
+        <div class="swiper reviews-slider">
+          <div class="swiper-wrapper" id="reviewList"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="logo logo--light">Nutri<span>Site</span></span>
+      <p>© 2026 NutriSite. Учебный проект. Заказ условный, платёж не списывается.</p>
+    </div>
+  </footer>
+
+  <!--модалка-->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" data-close-modal aria-label="Закрыть">×</button>
+
+      <form id="orderForm" novalidate>
+        <h2 id="modalTitle">Оформите доставку на неделю</h2>
+
+        <label class="field">Имя
+          <input type="text" name="name" autocomplete="name" placeholder="Анна" required>
+          <small class="error"></small>
+        </label>
+        <label class="field">Телефон
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+          <small class="error"></small>
+        </label>
+        <label class="field">Эл. почта
+          <input type="email" name="email" autocomplete="email" placeholder="anna@mail.ru" required>
+          <small class="error"></small>
+        </label>
+        <label class="field">Адрес доставки
+          <input type="text" name="address" autocomplete="street-address" placeholder="Жуковский, ул. Жуковского, 1" required>
+          <small class="error"></small>
+        </label>
+
+        <label class="field">Тариф
+          <select name="plan" id="planSelect"></select>
+        </label>
+
+        <fieldset class="field">
+          <legend>Дни доставки</legend>
+          <div class="days" id="days"></div>
+          <small class="error"></small>
+        </fieldset>
+
+        <div class="total">Итого за неделю: <strong id="total">0 ₽</strong></div>
+        <button type="submit" class="btn btn--full">Оформить заказ</button>
+      </form>
+
+      <div class="success" id="success" hidden>
+        <div class="success__icon">✓</div>
+        <h2>Заказ принят!</h2>
+        <p id="successText"></p>
+        <button class="btn" data-close-modal>Отлично</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
